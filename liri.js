@@ -1,7 +1,7 @@
 // Instructions -----------------------------------------------------
 
 // At the top of the liri.js file, write the code you need to grab the data from keys.js. Then store the keys in a variable.
-
+// var request = require("request");
 //    something like this-->     var request = require("twitterKeys");
 
 // Instructions  -----------------------------------------------------
@@ -18,10 +18,26 @@
 // **spotify-this-song**
 // node liri.js spotify-this-song '<song name here>'
 // This will show the following information about the song in your terminal/bash window
+// var track = process.argv[2] || "The%20Sign";
+// request("https://api.spotify.com/v1/search?q=tania%20bowra&type=artist", function(error, response, body) {
+
+//   // If there were no errors and the response code was 200 (i.e. the request was successful)...
+//   if (!error && response.statusCode === 200) {
+//   	console.log(JSON.parse(body));
+//    	console.log(JSON.parse(body).items);
+//    	console.log(JSON.parse(body).name);
+//    	console.log(JSON.parse(body).href);
+//    	console.log(JSON.parse(body).album);
+	   	
+//    }
+// });
+
+
 // Artist(s)
 // The song's name
 // A preview link of the song from Spotify
 // The album that the song is from
+
 // if no song is provided then your program will default to
 // "The Sign" by Ace of Base
 
@@ -32,17 +48,6 @@
 var request = require("request");
 // If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
 var movie = process.argv[2] || "Mr. Nobody";
-
-// We then run the request module on a URL with a JSON
-//this is a callback function (Think Gwen Stefani "Holla Back")
-// callback is asychronus; that's why you use it
-// ? query parameters
-// node is "error 1st response"
-// response is an object with properties (METADATA)
-// 'body' returns as a string
-// so, JSON.parse converts 'body' into an object
-// as an object, you can parse/select the properties you want to see, example: imdbRating
-// research "examples using JSON.parse()"  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
 
 request("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&r=json", function(error, response, body) {
 
@@ -69,4 +74,7 @@ request("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&r=json", function
 // It should run spotify-this-song for "I Want it That Way," as follows the text in random.txt.
 // Feel free to change the text in that document to test out the feature for other commands.
 
+// TESTING ->
+// node liri.js random.txt[0], random.txt[1];
+// <- TESTING
 // -----------------------------------------------------
